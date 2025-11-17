@@ -1,0 +1,417 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fce4ec, #f8bbd9, #e1bee7); /* Soft floral pastel gradient */
+    color: #333;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Curtain Overlays */
+.curtain {
+    position: fixed;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to bottom, #9c27b0, #e91e63);
+    z-index: 10;
+    opacity: 0.8;
+}
+
+.left-curtain {
+    left: 0;
+    border-right: 10px solid #ffd700;
+}
+
+.right-curtain {
+    right: 0;
+    border-left: 10px solid #ffd700;
+}
+
+/* Modal Styles */
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: linear-gradient(45deg, #ffd700, #fff);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 3px solid #9c27b0;
+}
+
+.modal-content h2 {
+    color: #9c27b0;
+}
+
+/* Hero Section */
+#hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-image: url('https://via.placeholder.com/1920x1080?text=Floral+Background'); /* Replace with floral image */
+    background-size: cover;
+    background-attachment: fixed; /* Parallax effect */
+}
+
+.photo-frame {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 8px solid #ffd700;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.photo-frame::before {
+    content: "👑";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#hero h1 {
+    font-size: 3.5rem;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+#hero p {
+    font-size: 1.3rem;
+    margin: 15px 0;
+    color: #ffd700;
+}
+
+button {
+    background: linear-gradient(45deg, #9c27b0, #e91e63);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #7b1fa2, #c2185b);
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Cake Styles */
+.cake {
+    width: 200px;
+    height: 150px;
+    background: linear-gradient(to bottom, #f8b500, #d2691e);
+    border-radius: 10px;
+    position: relative;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.candle {
+    width: 10px;
+    height: 40px;
+    background: #fff;
+    position: absolute;
+    top: -20px;
+    border-radius: 5px;
+}
+
+.candle:nth-child(1) { left: 40%; }
+.candle:nth-child(2) { left: 50%; transform: translateX(-50%); }
+.candle:nth-child(3) { right: 40%; }
+
+.hidden { display: none; }
+
+/* Flowers Animation */
+.flowers {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.flower {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #ff69b4, #ffb6c1);
+    border-radius: 50%;
+    position: relative;
+}
+
+.flower::before, .flower::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background: #ff69b4;
+    border-radius: 50%;
+}
+
+.flower::before { top: -10px; left: 0; }
+.flower::after { bottom: -10px; left: 0; }
+
+.bloom {
+    animation: bloom 3s ease-in-out infinite;
+}
+
+.delay-1 { animation-delay: 1s; }
+.delay-2 { animation-delay: 2s; }
+
+@keyframes bloom {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Confetti, Ribbons, Gems Animation */
+.confetti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #ffd700;
+    animation: fall 4s linear infinite;
+    border-radius: 50%;
+}
+
+.ribbon {
+    position: absolute;
+    width: 100px;
+    height: 10px;
+    background: linear-gradient(45deg, #ff69b4, #ffb6c1);
+    animation: wave 3s ease-in-out infinite;
+    border-radius: 5px;
+}
+
+.gem {
+    position: absolute;
+    font-size: 1.5rem;
+    color: #ffd700;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Countdown Section */
+#countdown {
+    padding: 60px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px;
+    border-radius: 15px;
+    border: 2px solid #9c27b0;
+}
+
+#timer {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e91e63;
+}
+
+/* Gallery Section */
+#gallery {
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px;
+    border-radius: 15px;
+}
+
+.gallery-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+}
+
+.gallery-item {
+    position: relative;
+}
+
+.gallery-img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.floral-frame {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 5px solid #ff69b4;
+    border-radius: 15px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover .floral-frame {
+    opacity: 1;
+}
+
+/* Wishes Section */
+#wishes {
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px;
+    border-radius: 15px;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Cards Section */
+#cards {
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px;
+    border-radius: 15px;
+}
+
+.message-card {
+    background: linear-gradient(45deg, #ffd700, #fff);
+    padding: 25px;
+    margin: 15px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: slideIn 1.2s ease-in-out forwards;
+    border: 2px solid #9c27b0;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    from {
+        transform: translateY(30px);
+    }
+}
+
+/* Guestbook Section */
+#guestbook {
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px;
+    border-radius: 15px;
+}
+
+#guest-form input, #guest-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #9c27b0;
+    border-radius: 10px;
+}
+
+.guest-message {
+    background: #f0f0f0;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border-left: 5px solid #e91e63;
+}
+
+/* Thank You Section */
+#thank-you {
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.glow {
+    text-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700;
+    animation: glow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 15px #ffd700;
+    }
+    to {
+        text-shadow: 0 0 30px #ffd700, 0 0 45px #ffd700;
+    }
+}
+
+/* Fireworks and Balloons */
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ffeb3b;
